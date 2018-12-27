@@ -39,7 +39,7 @@ public class AnnotationProcessor extends AbstractProcessor {
     public Messager mMessager; //日志相关的辅助类
     public String moduleName;
 
-    public TypeName TN_VIEW,TN_TOASTUTILS,TN_TEXTUTILS,TN_IVALIDATE,TN_EASY_VALIDATE = null;
+    public TypeName TN_VIEW,TN_TOASTUTILS,TN_TEXTUTILS,TN_IVALIDATE,TN_EASY_VALIDATE,TN_LISTENER = null;
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -52,6 +52,8 @@ public class AnnotationProcessor extends AbstractProcessor {
         TN_TEXTUTILS = getTypeName(C.TEXTUTILS);
         TN_IVALIDATE = getTypeName(C.IVALIDATE);
         TN_EASY_VALIDATE = getTypeName(C.EASY_VALIDATE);
+        TN_LISTENER = getTypeName(C.LISTENER);
+
         new ValidateProcessor().process(roundEnv,this);
         return true;
     }

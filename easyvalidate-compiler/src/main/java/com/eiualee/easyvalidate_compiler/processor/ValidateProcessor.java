@@ -63,9 +63,12 @@ public class ValidateProcessor implements IProcessor {
                 TypeSpec.Builder tBuilder = TypeSpec.classBuilder(useAnnoClassElement.getSimpleName().toString() + "_Validate")
                         .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                         .addSuperinterface(annotationProcessor.TN_IVALIDATE)
-                        .addJavadoc(" @ 由apt自动生成,请勿编辑\n");
-                tBuilder.addField(ac_fra_typeName, "target", Modifier.PRIVATE);
-                tBuilder.addField(annotationProcessor.TN_VIEW, "sourse", Modifier.PRIVATE);
+                        .addJavadoc(" @ 由apt自动生成,请勿编辑\n")
+                        .addField(ac_fra_typeName, "target", Modifier.PRIVATE)
+                        .addField(annotationProcessor.TN_LISTENER, "listener", Modifier.PRIVATE)
+                        .addField(annotationProcessor.TN_VIEW, "sourse", Modifier.PRIVATE);
+
+
                 //创建构造体
                 MethodSpec constructorBuilder = getConstrutorBuilder(useAnnoClassElement, ac_fra_typeName);
                 tBuilder.addMethod(constructorBuilder);
@@ -82,6 +85,8 @@ public class ValidateProcessor implements IProcessor {
                 tBuilder.addMethod(createUnBindMethod());
                 //创建isValidatePass方法
                 tBuilder.addMethod(createIsValidatePassMethod());
+                //创建setUnValidateListener方法
+                tBuilder.addMethod(createSetListener());
                 JavaFile javaFile = JavaFile.builder(annotationProcessor.mElements.getPackageOf(useAnnoClassElement).toString(), tBuilder.build()).build();
                 javaFile.writeTo(annotationProcessor.mFiler);
             }
@@ -94,6 +99,21 @@ public class ValidateProcessor implements IProcessor {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 创建setListener方法
+     *
+     * @return
+     */
+    private MethodSpec createSetListener() {
+        return MethodSpec.methodBuilder("setUnValidateListener")
+                .addModifiers(Modifier.FINAL, Modifier.PUBLIC)
+                .addJavadoc("@ 控件验证不合法监听\n")
+                .addParameter(annotationProcessor.TN_LISTENER, "listener")
+                .addStatement("this.$N = $N", "listener", "listener")
+                .build();
+
     }
 
     /**
@@ -217,7 +237,7 @@ public class ValidateProcessor implements IProcessor {
                 , validateRegularBean.getFieldName()
                 , annotationProcessor.getTypeName(validateRegularBean.getElementType())
                 , validateRegularBean.getId()
-                , annotationProcessor.TN_TOASTUTILS
+                , validateRegularBean.getId()
                 , validateRegularBean.getToast());
     }
 
@@ -235,7 +255,7 @@ public class ValidateProcessor implements IProcessor {
                 , validateNullBean.getFieldName()
                 , annotationProcessor.getTypeName(validateNullBean.getElementType())
                 , validateNullBean.getId()
-                , annotationProcessor.TN_TOASTUTILS
+                , validateNullBean.getId()
                 , validateNullBean.getToast());
     }
 
@@ -253,7 +273,7 @@ public class ValidateProcessor implements IProcessor {
                 , validateCheckBean.isValidateState() ? "" : "!"
                 , annotationProcessor.getTypeName(validateCheckBean.getElementType())
                 , validateCheckBean.getId()
-                , annotationProcessor.TN_TOASTUTILS
+                , validateCheckBean.getId()
                 , validateCheckBean.getToast());
     }
 
