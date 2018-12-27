@@ -1,12 +1,10 @@
-package com.eiualee.easyvalidate.utils;
+package com.eiualee.androideasyvalidate.utils;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.StringRes;
 import android.view.Gravity;
 import android.widget.Toast;
-
-import com.eiualee.easyvalidate.EasyValidate;
 
 /**
  * Created by liweihua on 2018/12/24.
@@ -232,7 +230,7 @@ public final class ToastUtils {
      * @param duration 显示时长
      */
     private static void showToast(@StringRes int resId, int duration) {
-        showToast(EasyValidate.sTopActivityWeakRef.get().getResources().getText(resId).toString(), duration);
+        showToast(Utils.sTopActivityWeakRef.get().getResources().getText(resId).toString(), duration);
     }
 
     /**
@@ -243,7 +241,7 @@ public final class ToastUtils {
      * @param args     参数
      */
     private static void showToast(@StringRes int resId, int duration, Object... args) {
-        showToast(String.format(EasyValidate.sTopActivityWeakRef.get().getResources().getString(resId), args), duration);
+        showToast(String.format(Utils.sTopActivityWeakRef.get().getResources().getString(resId), args), duration);
     }
 
     /**
@@ -266,7 +264,7 @@ public final class ToastUtils {
     private static void showToast(CharSequence text, int duration) {
         if (isJumpWhenMore) cancelToast();
         if (sToast == null) {
-            sToast = Toast.makeText(EasyValidate.sTopActivityWeakRef.get(), text, duration);
+            sToast = Toast.makeText(Utils.sTopActivityWeakRef.get(), text, duration);
             sToast.setGravity(Gravity.CENTER, 0, 0);
         } else {
             sToast.setText(text);

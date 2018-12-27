@@ -66,10 +66,6 @@ public final class EasyValidate {
 
     public final static IValidate createValidate(@NonNull Object target, @NonNull View source) {
 
-        if(getApp() == null){
-            throw new NullPointerException("u should init first");
-        }
-
         Class<?> targetClass = target.getClass();
         Constructor<? extends IValidate> constructor = findValidateConstructorForClass(targetClass);
 
@@ -136,71 +132,4 @@ public final class EasyValidate {
     public final static boolean isMatch(final String regex, final CharSequence input) {
         return input != null && input.length() > 0 && Pattern.matches(regex, input);
     }
-
-
-    private final static Application.ActivityLifecycleCallbacks mCallbacks = new Application.ActivityLifecycleCallbacks() {
-        @Override
-        public void onActivityCreated(Activity activity, Bundle bundle) {
-            sActivityList.add(activity);
-            setTopActivityWeakRef(activity);
-        }
-
-        @Override
-        public void onActivityStarted(Activity activity) {
-            setTopActivityWeakRef(activity);
-        }
-
-        @Override
-        public void onActivityResumed(Activity activity) {
-            setTopActivityWeakRef(activity);
-        }
-
-        @Override
-        public void onActivityPaused(Activity activity) {
-        }
-
-        @Override
-        public void onActivityStopped(Activity activity) {
-        }
-
-        @Override
-        public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
-        }
-
-        @Override
-        public void onActivityDestroyed(Activity activity) {
-            sActivityList.remove(activity);
-        }
-    };
-
-    private EasyValidate() {
-        throw new UnsupportedOperationException("u can't instantiate me...");
-    }
-
-    /**
-     * 初始化工具类
-     *
-     * @param app 应用
-     */
-    public final static void init(@NonNull final Application app) {
-        sApplication = app;
-        app.registerActivityLifecycleCallbacks(mCallbacks);
-    }
-
-    /**
-     * 获取Application
-     *
-     * @return Application
-     */
-    public final static Application getApp() {
-        if (sApplication != null) return sApplication;
-        throw new NullPointerException("u should init first");
-    }
-
-    private final static void setTopActivityWeakRef(Activity activity) {
-        if (sTopActivityWeakRef == null || !activity.equals(sTopActivityWeakRef.get())) {
-            sTopActivityWeakRef = new WeakReference<>(activity);
-        }
-    }
-
 }

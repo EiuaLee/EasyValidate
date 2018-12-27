@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.eiualee.androideasyvalidate.utils.ToastUtils;
 import com.eiualee.easyvalidate.EasyValidate;
 import com.eiualee.easyvalidate.impl.IValidate;
-import com.eiualee.easyvalidate.utils.ToastUtils;
 import com.eiualee.easyvalidate_annotations.Plan;
 import com.eiualee.easyvalidate_annotations.ValidateNull;
 import com.eiualee.easyvalidate_annotations.ValidateRegular;
@@ -23,19 +23,31 @@ import com.eiualee.easyvalidate_annotations.ValidateRegular;
 public class MainFragment extends Fragment {
 
     private IValidate IVALIDATE;
+
+    //18位身份证号码
+    public static final String REGEX_ID_CARD = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9Xx])$";
+
     @ValidateNull(id = R.id.et_input1, toast = "输入框1为空")
     EditText et_input1;
     @ValidateNull(id = R.id.et_input2, toast = "输入框2为空", plan = Plan.A)
     EditText et_input2;
     @ValidateNull(id = R.id.et_input3, toast = "输入框3为空", plan = {Plan.A, Plan.B})
-    @ValidateRegular(id = R.id.et_input3, toast = "输入框3内容不符合18位身份证", regular = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9Xx])$", plan = Plan.B)
+    @ValidateRegular(id = R.id.et_input3, toast = "输入框3内容不符合18位身份证", regular = REGEX_ID_CARD, plan = Plan.B)
     EditText et_input3;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_main, container, false);
+
         IVALIDATE = EasyValidate.bind(this, fragmentView);
+        IVALIDATE.setUnValidateListener(new IValidate.OnViewUnValidateListener() {
+            @Override
+            public void unValidate(int viewId, String toast) {
+                ToastUtils.showLongToast(toast);
+            }
+        });
+
         initView(fragmentView);
         initEvent(fragmentView);
         return fragmentView;
