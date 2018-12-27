@@ -39,7 +39,17 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_main, container, false);
+        bindEasyValidate(fragmentView);
+        initView(fragmentView);
+        initEvent(fragmentView);
+        return fragmentView;
+    }
 
+    /**
+     * 绑定
+     * @param fragmentView
+     */
+    private void bindEasyValidate(View fragmentView) {
         IVALIDATE = EasyValidate.bind(this, fragmentView);
         IVALIDATE.setUnValidateListener(new IValidate.OnViewUnValidateListener() {
             @Override
@@ -47,10 +57,6 @@ public class MainFragment extends Fragment {
                 ToastUtils.showLongToast(toast);
             }
         });
-
-        initView(fragmentView);
-        initEvent(fragmentView);
-        return fragmentView;
     }
 
     private void initEvent(final View fragmentView) {
@@ -92,4 +98,9 @@ public class MainFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        IVALIDATE.unBind();
+    }
 }

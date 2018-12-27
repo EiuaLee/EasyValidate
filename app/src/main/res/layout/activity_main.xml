@@ -9,15 +9,17 @@
 
 
     <EditText
+        android:id="@+id/et_activityInput"
         android:hint="这是Activity中的输入框"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
 
     <Button
+        android:id="@+id/btn_validate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="提交" />
+        android:text="验证" />
 
     <RelativeLayout
         android:id="@+id/rlay_fragmentReplace"

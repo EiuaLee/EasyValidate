@@ -12,7 +12,6 @@ public interface C {
     String EASY_VALIDATE = "com.eiualee.easyvalidate.EasyValidate";
     String ACTIVITY = "android.app.Activity";
     String TEXTUTILS = "android.text.TextUtils";
-    String TOASTUTILS = "com.eiualee.easyvalidate.utils.ToastUtils";
     String VIEW = "android.view.View";
     String UITHREAD = "android.support.annotation.UiThread";
 
