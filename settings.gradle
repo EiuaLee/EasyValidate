@@ -1,0 +1,1 @@
+include ':app', ':easyvalidate-annotations', ':easyvalidate-compiler', ':easyvalidate'

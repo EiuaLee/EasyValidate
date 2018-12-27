@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
+//
+//
+//
+//publish {
+//    userOrg = '组织ID' //bintray账户下某个组织id
+//    groupId = 'com.eiualee.easyvalidate' //maven仓库下库的包名，一般为模块包名
+//    artifactId = 'easyvalidate' //项目名称
+//    publishVersion = '1.0.0' //版本号
+//    desc = 'A tool to verify the validity of submitting and filling in information' //项目介绍，可以不写
+//    website = '' //项目主页，可以不写
+//}
+
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api project(':easyvalidate-annotations')
+}

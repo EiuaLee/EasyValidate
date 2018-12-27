@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#d9d7d7"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_input1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="这是Fragment中的输入框1 参加计划:DEFAULT" />
+
+    <EditText
+        android:id="@+id/et_input2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="这是Fragment中的输入框2 参加计划:A" />
+
+    <EditText
+        android:id="@+id/et_input3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="这是Fragment中的输入框3 参加计划:A,B" />
+
+    <Button
+        android:id="@+id/btn_commit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认验证计划" />
+
+    <Button
+        android:id="@+id/btn_commit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证计划A" />
+
+    <Button
+        android:id="@+id/btn_commit3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证计划B" />
+
+</LinearLayout>
