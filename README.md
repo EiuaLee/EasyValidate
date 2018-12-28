@@ -151,3 +151,4 @@ EditText et_pw;
 `plan = {Plan.A, Plan.B}`就这么简单，我既参加计划A的校验，也参加计划B的校验，这下可没毛病了吧！
 >使用的注意事项
 * `组件化`开发时要配合Butternife使用，我懒得去生成R2文件了，毕竟重复造轮子没意义是吧。
+>简书地址:<https://www.jianshu.com/p/311ab5be9e2e>
