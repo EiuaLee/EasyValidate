@@ -1,15 +1,5 @@
 # EasyValidate
-* 使用方法，在Project下的build.gradle文件下面的allprojects中添加以下代码片段
-```
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven {url "https://dl.bintray.com/liweihua/maven/"}
-    }
-}
-```
-* 然后，在module的build.gradle中添加
+* 使用方法，在module的build.gradle中添加
 ```
     implementation 'com.eiualee:easyvalidate:1.0.0'
     annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.0'
