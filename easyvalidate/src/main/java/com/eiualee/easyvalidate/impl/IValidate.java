@@ -31,17 +31,17 @@ public interface IValidate {
 
         @Override
         public boolean isEmptyValidate(int plan) {
-            return false;
+            return true;
         }
 
         @Override
         public boolean isCheckValidate(int plan) {
-            return false;
+            return true;
         }
 
         @Override
         public boolean isRegularValidate(int plan) {
-            return false;
+            return true;
         }
 
         @Override

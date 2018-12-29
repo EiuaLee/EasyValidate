@@ -11,8 +11,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface ValidateCheck {
+
     int id();//控件ID
+
     String toast();//不合法时提示的内容
+
     int[] plan() default {Plan.DEFAULT};//校验计划
+
     boolean validateState() default false;//勾选的值不能与此相同,相同的话提示错误
 }
