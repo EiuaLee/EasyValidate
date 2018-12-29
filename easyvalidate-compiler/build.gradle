@@ -1,17 +1,5 @@
-apply plugin: 'java'
-
-apply plugin: 'maven'
-uploadArchives {
-    repositories.mavenDeployer {
-        def mavenDirPath = file('/Users/liweihua/Workspaces') // 本地存放目录(自行选择)，可放在gradle.properties文件中引用
-        repository(url:"file://${mavenDirPath.absolutePath}") // 必须双引号，单引号不会转义$
-        pom.project {
-            groupId "com.eiualee" // 可以随意取，一般取包名
-            artifactId "easyvalidate-compiler" // 可以随意取，一般取库的名字
-            version "1.0.0" // 版本号
-        }
-    }
-}
+apply plugin: 'java-library'
+apply plugin: 'com.novoda.bintray-release'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -26,3 +14,50 @@ dependencies {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
+
+publish {
+    artifactId = 'easyvalidate-compiler'
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    uploadName = rootProject.uploadName
+    publishVersion = rootProject.publishVersion
+    desc = rootProject.description
+    website = rootProject.website
+    licences = rootProject.licences
+}
+
+
+//
+//tasks.withType(Javadoc) {//防止编码问题
+//    options.addStringOption('Xdoclint:none', '-quiet')
+//    options.addStringOption('encoding', 'UTF-8')
+//    options.addStringOption('charSet', 'UTF-8')
+//}
+//
+//if (project.hasProperty("android")) { // Android libraries
+//    task sourcesJar(type: Jar) {
+//        classifier = 'sources'
+//        from android.sourceSets.main.java.srcDirs
+//    }
+//
+//    task javadoc(type: Javadoc) {
+//        source = android.sourceSets.main.java.srcDirs
+//        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    }
+//} else { // Java libraries
+//    task sourcesJar(type: Jar, dependsOn: classes) {
+//        classifier = 'sources'
+//        from sourceSets.main.allSource
+//    }
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
