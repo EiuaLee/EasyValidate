@@ -1,9 +1,26 @@
 # EasyValidate
 * 使用方法，在module的build.gradle中添加
 ```
-    implementation 'com.eiualee:easyvalidate:1.0.2'
-    annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.2'
+    implementation 'com.eiualee:easyvalidate:1.0.3'
+    annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.3'
 ```
+# V1.0.0
+* 对于自定义View
+```
+  //使用@ValidateNull时，请务必手动实现这个方法
+  public CharSequence getText(){
+    //这里面的内容根据自身情况定
+     return editText.getText();
+  }
+
+  //使用@ValidateCheck时，请务必手动实现这个方法
+  public boolean isCheck(){
+    //这里面的内容根据自身情况定
+     return checkBox.isCheck();
+  }
+
+```
+
 >一、用法
 ---
 `EasyValidate`提供了3种注解验证，注：Plan字段等下再说
