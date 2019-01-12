@@ -1,8 +1,8 @@
 # EasyValidate
 * 使用方法，在module的build.gradle中添加
 ```
-    implementation 'com.eiualee:easyvalidate:1.0.0'
-    annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.0'
+    implementation 'com.eiualee:easyvalidate:1.0.2'
+    annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.2'
 ```
 >一、用法
 ---
