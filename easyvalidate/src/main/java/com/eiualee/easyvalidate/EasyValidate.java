@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -117,19 +119,16 @@ public final class EasyValidate {
         return validateCor;
     }
 
+
     /**
-     * 获取文本
-     * @param view
+     * 是否符合正则表达式
+     * @param regex
+     * @param input
      * @return
      */
-    public final static String getText(View view) {
-        if (view != null && view instanceof TextView) {
-            return ((TextView) view).getText().toString().trim();
-        }
-        return "";
-    }
-
     public final static boolean isMatch(final String regex, final CharSequence input) {
         return input != null && input.length() > 0 && Pattern.matches(regex, input);
     }
+
+
 }

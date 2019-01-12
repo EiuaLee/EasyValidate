@@ -24,13 +24,13 @@ public interface C {
             "\n       return false;" +
             "\n     }\n";
 
-    String VALIDATE_NULL_CODE =  "     if ($T.isEmpty($T.getText(target.$N != null?target.$N:(($T)sourse.findViewById($L))))){" +
+    String VALIDATE_NULL_CODE =  "     if ($T.isEmpty(target.$N != null?target.$N.getText().toString().trim():(($T)sourse.findViewById($L)).getText().toString().trim())){" +
             "\n       if(listener == null)return false;" +
             "\n       listener.unValidate($L,$S);" +
             "\n       return false;" +
             "\n     }\n";
 
-    String VALIDATE_REGULAR_CODE = "     if(!$T.isMatch($S,$T.getText(target.$N != null?target.$N:($T)sourse.findViewById($L)))){" +
+    String VALIDATE_REGULAR_CODE = "     if(!$T.isMatch($S,target.$N != null?target.$N.getText().toString().trim():(($T)sourse.findViewById($L)).getText().toString().trim())){" +
             "\n       if(listener == null)return false;" +
             "\n       listener.unValidate($L,$S);" +
             "\n       return false;" +

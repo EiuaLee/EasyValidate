@@ -232,7 +232,6 @@ public class ValidateProcessor implements IProcessor {
                 C.VALIDATE_REGULAR_CODE
                 , annotationProcessor.TN_EASY_VALIDATE
                 , validateRegularBean.getRegular()
-                , annotationProcessor.TN_EASY_VALIDATE
                 , validateRegularBean.getFieldName()
                 , validateRegularBean.getFieldName()
                 , annotationProcessor.getTypeName(validateRegularBean.getElementType())
@@ -250,7 +249,6 @@ public class ValidateProcessor implements IProcessor {
         blockBuilder.add(
                 C.VALIDATE_NULL_CODE
                 , annotationProcessor.TN_TEXTUTILS
-                , annotationProcessor.TN_EASY_VALIDATE
                 , validateNullBean.getFieldName()
                 , validateNullBean.getFieldName()
                 , annotationProcessor.getTypeName(validateNullBean.getElementType())
