@@ -4,7 +4,7 @@
     implementation 'com.eiualee:easyvalidate:1.0.3'
     annotationProcessor 'com.eiualee:easyvalidate-compiler:1.0.3'
 ```
-# V1.0.0
+# V1.0.3
 * 对于自定义View
 ```
   //使用@ValidateNull时，请务必手动实现这个方法
