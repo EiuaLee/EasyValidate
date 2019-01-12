@@ -7,7 +7,7 @@
 # V1.0.3
 * 对于自定义View
 ```
-  //使用@ValidateNull时，请务必手动实现这个方法
+  //使用@ValidateNull  @ValidateRegular时，请务必手动实现这个方法
   public CharSequence getText(){
     //这里面的内容根据自身情况定
      return editText.getText();
